@@ -1,0 +1,8 @@
+---
+- name: Collect SSL certificate data
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: SSL collection placeholder
+      ansible.builtin.debug:
+        msg: SSL collection will call discovery.plugins.ssl

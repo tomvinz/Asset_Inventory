@@ -1,0 +1,8 @@
+---
+name: Discover Network
+job_type: run
+inventory: Local Discovery Inventory
+project: Asset Discovery Platform
+playbook: ansible/playbooks/discover_assets.yml
+credentials: []
+ask_variables_on_launch: true

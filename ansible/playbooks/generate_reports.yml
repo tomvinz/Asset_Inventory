@@ -1,0 +1,8 @@
+---
+- name: Generate inventory reports
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Reporting placeholder
+      ansible.builtin.debug:
+        msg: Reporting will publish inventory summaries and audit artifacts

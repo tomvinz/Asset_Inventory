@@ -1,0 +1,8 @@
+---
+- name: Enrich assets with DNS data
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: DNS enrichment placeholder
+      ansible.builtin.debug:
+        msg: DNS enrichment will call discovery.plugins.dns

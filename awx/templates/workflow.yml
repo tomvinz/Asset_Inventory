@@ -1,0 +1,11 @@
+---
+name: Asset Discovery Workflow
+description: Discovery, enrichment, correlation, and reporting workflow.
+nodes:
+  - Discover Network
+  - DNS Enrichment
+  - SNMP Collection
+  - SMB Collection
+  - SSL Collection
+  - Asset Correlation
+  - Generate Reports

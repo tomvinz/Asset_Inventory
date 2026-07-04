@@ -1,0 +1,7 @@
+---
+name: Asset Discovery Platform
+description: Git-backed Ansible project for cyber asset discovery.
+scm_type: git
+scm_url: https://github.com/your-org/asset-discovery-platform.git
+scm_branch: main
+scm_update_on_launch: true

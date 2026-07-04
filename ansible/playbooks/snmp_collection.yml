@@ -1,0 +1,8 @@
+---
+- name: Collect SNMP data
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: SNMP collection placeholder
+      ansible.builtin.debug:
+        msg: SNMP collection will call discovery.plugins.snmp

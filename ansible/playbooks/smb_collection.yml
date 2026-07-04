@@ -1,0 +1,8 @@
+---
+- name: Collect SMB data
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: SMB collection placeholder
+      ansible.builtin.debug:
+        msg: SMB collection will call discovery.plugins.smb

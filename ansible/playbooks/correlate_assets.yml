@@ -1,0 +1,8 @@
+---
+- name: Correlate discovered assets
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Correlation placeholder
+      ansible.builtin.debug:
+        msg: Correlation engine will normalize and deduplicate assets
