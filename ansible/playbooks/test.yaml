@@ -1,0 +1,9 @@
+---
+- name: Test AWX
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Verify AWX
+      ansible.builtin.debug:
+        msg: "Hello from AWX!"
