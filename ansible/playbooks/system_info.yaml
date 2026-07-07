@@ -1,0 +1,20 @@
+---
+- name: Collect System Information
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+
+    - name: Display hostname
+      debug:
+        msg: "Hostname is {{ ansible_hostname }}"
+
+
+    - name: Display operating system
+      debug:
+        msg: "Operating system is {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+
+    - name: Display IP address
+      debug:
+        msg: "IP address is {{ ansible_default_ipv4.address }}"
