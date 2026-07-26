@@ -28,4 +28,3 @@
     - name: Display the file
       ansible.builtin.debug:
         var: file_content.stdout
-        
