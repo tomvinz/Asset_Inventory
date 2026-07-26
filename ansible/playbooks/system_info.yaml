@@ -1,20 +1,32 @@
 ---
-- name: Collect System Information
+- name: Facts Explorer
   hosts: localhost
   gather_facts: true
 
   tasks:
 
-    - name: Display hostname
+    - name: Show hostname
       debug:
-        msg: "Hostname is {{ ansible_hostname }}"
+        var: ansible_hostname
 
-
-    - name: Display operating system
+    - name: Show operating system
       debug:
-        msg: "Operating system is {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        var: ansible_distribution
 
-
-    - name: Display IP address
+    - name: Show architecture
       debug:
-        msg: "IP address is {{ ansible_default_ipv4.address }}"
+        var: ansible_architecture
+
+    - name: Show Python version
+      debug:
+        var: ansible_python_version
+
+    - name: Show all IPv4 addresses (if available)
+      debug:
+        var: ansible_all_ipv4_addresses
+      when: ansible_all_ipv4_addresses is defined
+
+    - name: Show network interfaces
+      debug:
+        var: ansible_interfaces
+      when: ansible_interfaces is defined
