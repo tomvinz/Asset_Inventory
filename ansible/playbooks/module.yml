@@ -1,3 +1,4 @@
+---
 - name: Learn Modules
   hosts: localhost
   gather_facts: false
@@ -8,6 +9,7 @@
       ansible.builtin.file:
         path: /tmp/ansible-demo
         state: directory
+        mode: "0755"
 
     - name: Create a text file
       ansible.builtin.copy:
@@ -15,10 +17,13 @@
         content: |
           Hello from AWX!
           This file was created by Ansible.
+        mode: "0644"
 
     - name: Read the file
-      ansible.builtin.command: cat /tmp/ansible-demo/readme.txt
+      ansible.builtin.command:
+        cmd: cat /tmp/ansible-demo/readme.txt
       register: file_content
+      changed_when: false
 
     - name: Display the file
       ansible.builtin.debug:
