@@ -11,7 +11,9 @@
 
     - name: Display operating system
       ansible.builtin.debug:
-        msg: "Operating system is {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        msg: >
+          Operating system is {{ ansible_distribution }}
+          {{ ansible_distribution_version }}
 
     - name: Display Python version
       ansible.builtin.debug:
