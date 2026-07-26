@@ -1,32 +1,32 @@
 ---
-- name: Facts Explorer
+- name: Collect System Information
   hosts: localhost
   gather_facts: true
 
   tasks:
 
-    - name: Show hostname
-      debug:
-        var: ansible_hostname
+    - name: Display hostname
+      ansible.builtin.debug:
+        msg: "Hostname is {{ ansible_hostname }}"
 
-    - name: Show operating system
-      debug:
-        var: ansible_distribution
+    - name: Display operating system
+      ansible.builtin.debug:
+        msg: "Operating system is {{ ansible_distribution }} {{ ansible_distribution_version }}"
 
-    - name: Show architecture
-      debug:
-        var: ansible_architecture
-
-    - name: Show Python version
-      debug:
+    - name: Display Python version
+      ansible.builtin.debug:
         var: ansible_python_version
 
-    - name: Show all IPv4 addresses (if available)
-      debug:
+    - name: Display architecture
+      ansible.builtin.debug:
+        var: ansible_architecture
+
+    - name: Display IPv4 addresses
+      ansible.builtin.debug:
         var: ansible_all_ipv4_addresses
       when: ansible_all_ipv4_addresses is defined
 
-    - name: Show network interfaces
-      debug:
+    - name: Display network interfaces
+      ansible.builtin.debug:
         var: ansible_interfaces
       when: ansible_interfaces is defined
