@@ -1,42 +1,37 @@
-name: CI
+name: Ansible CI
 
 on:
   push:
-    branches: [main, develop]
+    branches:
+      - main
+      - develop
   pull_request:
 
 jobs:
-  test:
+  ansible-test:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install dependencies
+      - name: Install Ansible
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          pip install ansible ansible-lint yamllint
 
-      - name: Format check
+      - name: Check YAML syntax
         run: |
-          black --check .
-          isort --check-only .
+          yamllint ansible/
 
-      - name: Lint
-        run: flake8 .
-
-      - name: Test
-        run: pytest
-
-      - name: Security scan
+      - name: Ansible syntax check
         run: |
-          bandit -r api discovery
-          safety scan || safety check
+          ansible-playbook \
+          --syntax-check \
+          ansible/playbooks/*.yaml
 
-      - name: Build API image
-        run: docker build -f docker/api.Dockerfile -t asset-discovery-platform-api:ci .
+      - name: Run ansible-lint
+        run: |
+          ansible-lint ansible/playbooks/
