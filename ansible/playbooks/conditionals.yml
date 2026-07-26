@@ -1,0 +1,32 @@
+---
+- name: Learn Conditionals
+  hosts: localhost
+  gather_facts: true
+
+  vars:
+    environment: "development"
+    scan_enabled: true
+
+  tasks:
+
+    - name: Show environment
+      ansible.builtin.debug:
+        msg: "Running in {{ environment }} environment"
+
+
+    - name: Run development task
+      ansible.builtin.debug:
+        msg: "Development scan enabled"
+      when: environment == "development"
+
+
+    - name: Run production task
+      ansible.builtin.debug:
+        msg: "Production scan enabled"
+      when: environment == "production"
+
+
+    - name: Run asset discovery
+      ansible.builtin.debug:
+        msg: "Starting asset discovery"
+      when: scan_enabled
