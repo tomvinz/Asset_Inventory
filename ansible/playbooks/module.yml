@@ -1,0 +1,25 @@
+- name: Learn Modules
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Create a directory
+      ansible.builtin.file:
+        path: /tmp/ansible-demo
+        state: directory
+
+    - name: Create a text file
+      ansible.builtin.copy:
+        dest: /tmp/ansible-demo/readme.txt
+        content: |
+          Hello from AWX!
+          This file was created by Ansible.
+
+    - name: Read the file
+      ansible.builtin.command: cat /tmp/ansible-demo/readme.txt
+      register: file_content
+
+    - name: Display the file
+      ansible.builtin.debug:
+        var: file_content.stdout
